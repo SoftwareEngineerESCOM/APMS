@@ -40,5 +40,5 @@ By Convention we will add Guards to the `Auth` module.
 
 ### Build for production
 
-`ng build --prod --build-optimizer --output-path public --base-href https://SoftwareEngineerESCOM.gitlab.io/APMS/`
+`ng build --prod --build-optimizer --output-path public --base-href /`
 
