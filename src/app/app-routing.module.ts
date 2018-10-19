@@ -4,7 +4,7 @@ import {LoginComponent} from './auth/components/login/login.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
-  { path: 'APMS', component: LoginComponent}
+  { path: '**', component: LoginComponent}
 ];
 
 @NgModule({
