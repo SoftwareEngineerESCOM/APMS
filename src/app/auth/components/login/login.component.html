@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="app-title-div">{{ app_name }}</div>
+  <mat-card class="login-card">
+    <mat-card-title class="login-card-title">Inicio de Sesión</mat-card-title>
+    <div>
+      <mat-form-field class="username-form-field">
+        <mat-label>Ingrese Matricula</mat-label>
+        <input matInput [(ngModel)]="user_id" (keyup.enter)="submit()" appAutofocus class="username-input"
+               placeholder="2017091234">
+      </mat-form-field>
+      <mat-form-field class="username-form-field">
+        <mat-label>Ingrese Contraseña</mat-label>
+        <input matInput [(ngModel)]="user_id" (keyup.enter)="submit()" class="username-input"
+               placeholder="********">
+      </mat-form-field>
+
+      <button mat-raised-button (click)="submit()" class="enter-btn" color="primary">Entrar</button>
+    </div>
+  </mat-card>
+</div>

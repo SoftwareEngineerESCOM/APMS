@@ -1,0 +1,19 @@
+pages:
+  stage: deploy
+  before_script:
+    - apt-get update
+    - apt-get install -y wget
+    - curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
+    - bash nodesource_setup.sh
+    - apt-get install nodejs
+    - node -v
+    - npm install @angular/cli -g
+    - npm install
+  script:
+    - ng build --prod --build-optimizer --output-path public --base-href https://SoftwareEngineerESCOM.gitlab.io/APMS/public
+    - cp public/index.html public/404.html
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
