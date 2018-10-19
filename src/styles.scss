@@ -43,8 +43,13 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
 
+
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  background-color: mat-color($app-primary);
+}
 
 .bold {
   font-weight: bold;
@@ -57,10 +62,3 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 .pointer {
   cursor: pointer;
 }
-
-body {
-  background-color: mat-color($app-primary);
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
