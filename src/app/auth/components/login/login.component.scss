@@ -25,9 +25,8 @@
   width: 764px;
   left: 0;
   right: 0;
-  margin: auto;
   color: whitesmoke;
-  margin-top: 20px;
+  margin: 20px auto auto;
 }
 
 .enter-btn {
@@ -39,5 +38,5 @@
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: $accent-light;
+  background-color: lightgray;
 }
