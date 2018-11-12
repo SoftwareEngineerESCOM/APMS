@@ -3,6 +3,10 @@ import {UserService} from 'src/app/shared/services/user.service';
 import {APP_NAME} from 'src/environments/environment';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {labels, placeholders} from './login.strings';
+import {MatSnackBar} from '@angular/material';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {UserCredentials} from '../../classes/user-credentials';
 
 @Component({
   selector: 'app-login',
@@ -10,34 +14,35 @@ import {AuthService} from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  user_id: string;
-  app_name: string;
-  profile_img: string;
+  labels = labels;
+  placeholders = placeholders;
+  userCredentialsForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder
   ) {
+    this.userCredentialsForm = this.formBuilder.group(new UserCredentials());
   }
 
   ngOnInit() {
-    this.app_name = APP_NAME;
   }
 
   submit() {
-    if (this.user_id === '') {
-      alert('Enter a valid username');
-      return;
-    }
-
-    this.userService.setUserData(this.user_id, this.profile_img);
+    console.log(this.userCredentialsForm.value as UserCredentials);
+    this.showSnackBar(this.labels.snackBarMessage, this.labels.snackBarAction, 2500);
     if (!this.authService.authenticate()) {
-      alert('usuario invalido');
       return;
     }
     // this.router.navigate(['/chat']);
   }
 
+  showSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, {
+      duration: duration
+    });
+  }
 }

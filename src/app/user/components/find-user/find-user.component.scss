@@ -1,0 +1,54 @@
+@import '~src/global_classes';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.c_container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: fit-content;
+  margin-top: 20px;
+}
+
+.mat-card-container {
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  flex-shrink: 0;
+}
+
+.vertical_space {
+  display: flex;
+  flex-shrink: 0;
+  height: 10px;
+}
+
+tr.mat-row {
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+tr.mat-row:hover {
+  background: #e6e6e6;
+}
+
+.no-background-change {
+  background: white;
+}
+
+table {
+  padding-bottom: 10px;
+}
+
+td {
+  border: 0.5px solid #e6e6e6;
+  border-radius: 30px;
+}
+
+.expanded {
+  flex: 1;
+}

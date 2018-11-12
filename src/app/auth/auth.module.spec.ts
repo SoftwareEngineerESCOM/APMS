@@ -7,7 +7,7 @@ describe('AuthModule', () => {
     authModule = new AuthModule();
   });
 
-  it('should create an instance', () => {
+  it('should create-human-resource an instance', () => {
     expect(authModule).toBeTruthy();
   });
 });

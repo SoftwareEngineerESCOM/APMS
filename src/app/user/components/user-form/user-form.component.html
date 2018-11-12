@@ -1,0 +1,20 @@
+<app-human-resource-form (onSubmit)="this.onSubmit.emit(true);"></app-human-resource-form>
+<form [formGroup]="userForm" (ngSubmit)="this.onSubmit.emit(true);">
+  <mat-form-field>
+    <mat-label>{{labels.password}}</mat-label>
+    <input matInput formControlName="password" type="password" placeholder="{{placeholders.password}}">
+  </mat-form-field>
+  <!--<mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-description>
+          {{labels.advancedOptions}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-checkbox [formControl]="userForm.controls['isAccountBlocked']" class="example-margin">
+        {{labels.access}}
+      </mat-checkbox>
+    </mat-expansion-panel>
+  </mat-accordion>-->
+  <button type="submit" style="display: none;"></button>
+</form>

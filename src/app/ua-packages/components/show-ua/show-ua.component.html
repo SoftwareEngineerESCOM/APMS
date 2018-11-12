@@ -1,0 +1,97 @@
+<div class="container">
+  <mat-card class="myCard">
+
+    <mat-card-header>
+      <mat-card-title>{{labels.pageTitle}}</mat-card-title>
+      <mat-card-subtitle>{{labels.pageDescription}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Filters section -->
+      <mat-grid-list cols="5" rowHeight="2em">
+
+        <mat-grid-tile *ngFor="let selectObj of selectArray">
+          <mat-form-field>
+            <mat-select placeholder="{{selectObj.placeholder}}" disabled="{{selectObj.disabled}}">
+              <mat-option *ngFor="let option of selectObj.options$ | async" [value]="option.value">
+                {{option.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button mat-raised-button color="primary" >Buscar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <br>
+      <mat-divider></mat-divider>
+      <br>
+      <!-- Table section -->
+      <!-- add item section -->
+      <mat-grid-list cols="5" rowHeight="2em">
+
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select #newUA placeholder="Unidades de aprendizaje">
+              <mat-option value="UA-1">UA-1</mat-option>
+              <mat-option value="UA-2">UA-2</mat-option>
+              <mat-option value="UA-3">UA-3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <input #newDL matInput [matDatepicker]="picker" placeholder="Fecha de entrega">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field>
+            <mat-select #newAnal placeholder="Analista a asignar">
+              <mat-option value="Analista-1">Analista-1</mat-option>
+              <mat-option value="Analista-2">Analista-2</mat-option>
+              <mat-option value="Analista-3">Analista-3</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button (click)="addUaInf(newUA.value, newDL.value, newAnal.value)" mat-flat-button color="primary">Agregar</button>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <button (click)="clearFields(newUA, newDL, newAnal)" mat-flat-button color="warn">Cancelar</button>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <br>
+    <mat-grid-list cols="{{tableHeader.length}}" rowHeight="2em">
+      <div *ngFor="let header of tableHeader">
+        <mat-grid-tile  class="tableHeadCell">
+          {{header}}
+        </mat-grid-tile>
+      </div>
+      <div *ngFor="let uaInf of uaInfo$ | async">
+        <mat-grid-tile class="tableBodyCell">
+          {{uaInf.learningUnitName}}
+        </mat-grid-tile>
+        <mat-grid-tile class="tableBodyCell">
+          {{uaInf.deadLine}}
+        </mat-grid-tile>
+        <mat-grid-tile class="tableBodyCell">
+          {{uaInf.analystName}}
+        </mat-grid-tile>
+        <mat-grid-tile class="tableBodyCell">
+          {{uaInf.status}}
+        </mat-grid-tile>
+        <mat-grid-tile class="tableBodyCell">
+          <div *ngFor="let act of rowActns">
+            <button mat-flat-button (click)="act.execAction(uaInf.learningUnitName)">{{act.viewValue}}</button>
+          </div>
+        </mat-grid-tile>
+      </div>
+      </mat-grid-list>
+
+  </mat-card-content>
+
+  </mat-card>
+
+</div>

@@ -1,0 +1,41 @@
+<form [formGroup]="humanResourceForm" (ngSubmit)="onSubmit.emit(true)">
+  <mat-form-field [ngClass]="{'hide': !showIdField}">
+    <mat-label>{{labels.id}}</mat-label>
+    <input matInput formControlName="id" type="text" placeholder="{{placeholders.id}}" maxlength="10">
+    <mat-hint align="end">{{humanResourceForm.controls['id'].value.length}} / 10</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.name}}</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="{{placeholders.name}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.firstSurname}}</mat-label>
+    <input matInput formControlName="firstSurname" type="text" placeholder="{{placeholders.firstSurname}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.secondSurname}}</mat-label>
+    <input matInput formControlName="secondSurname" type="text" placeholder="{{placeholders.secondSurname}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="title" [placeholder]="labels.title">
+      <ngx-mat-select-search [formControl]="searchTitlesCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let title of filteredTitles | async" [value]="title">{{title.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="position" [placeholder]="labels.position">
+      <ngx-mat-select-search [formControl]="searchPositionsCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let position of filteredPositions | async" [value]="position">{{position.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="workplace" [placeholder]="labels.workplace">
+      <ngx-mat-select-search [formControl]="searchWorkplacesCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let workplace of filteredWorkplaces | async" [value]="workplace">{{workplace.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" style="display: none;"></button>
+</form>

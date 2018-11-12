@@ -1,0 +1,12 @@
+<div class="container">
+  <mat-accordion [multi]="true">
+    <mat-expansion-panel *ngFor="let semester of semesters">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Semestre: {{semester.SemesterNumber}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <app-find-learning-unit [semesterId]="semester.id"></app-find-learning-unit>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

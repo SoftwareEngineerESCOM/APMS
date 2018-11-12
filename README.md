@@ -4,7 +4,7 @@ Front-End Application
 
 ## Commands to keep structure:
 
-### Create Angular 7 Project
+### Create Angular 6 Project
 
 `ng new {projectName} --style=scss --routing`
 
@@ -12,13 +12,21 @@ Front-End Application
 
 `ng g m {moduleName} --routing`
 
+### Create Shared Module
+
+`ng g m shared/modules/{moduleName}`
+
 ### Create Component
 
 `ng g c {moduleName}/components/{componentName} --module {moduleName}`
 
+### Create Class
+
+`ng g cl {moduleName}/classes/{className}`
+
 ### Create Interface
 
-`ng g i {interfaceName}/interfaces/{interfaceName}`
+`ng g i {moduleName}/interfaces/{interfaceName}`
 
 ### Create Service
 
@@ -39,6 +47,8 @@ By Convention we will add Guards to the `Auth` module.
 `ng serve --watch`
 
 ### Build for production
+
+`npm install`
 
 `ng build --prod --build-optimizer --output-path public --base-href /`
 

@@ -1,0 +1,41 @@
+<form [formGroup]="learningUnitForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-label>{{labels.name}}</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="{{placeholders.name}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.TEPICCredits}}</mat-label>
+    <input matInput formControlName="TEPICCredits" type="text" placeholder="{{placeholders.TEPICCredits}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.SATCACredits}}</mat-label>
+    <input matInput formControlName="SATCACredits" type="text" placeholder="{{placeholders.SATCACredits}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.theoryHoursPerWeek}}</mat-label>
+    <input matInput formControlName="theoryHoursPerWeek" type="text" placeholder="{{placeholders.theoryHoursPerWeek}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.practiceHoursPerWeek}}</mat-label>
+    <input matInput formControlName="practiceHoursPerWeek" type="text"
+           placeholder="{{placeholders.practiceHoursPerWeek}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="formationArea" [placeholder]="labels.formationArea">
+      <ngx-mat-select-search [formControl]="searchFormationAreaCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let formationArea of filteredFormationAreas | async" [value]="formationArea.value">
+        {{formationArea.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="semester" [placeholder]="labels.semester">
+      <ngx-mat-select-search [formControl]="searchSemesterCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let semester of filteredSemesters | async" [value]="semester.value">{{semester.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" style="display: none;"></button>
+</form>

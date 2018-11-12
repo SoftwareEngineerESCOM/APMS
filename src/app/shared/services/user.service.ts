@@ -1,20 +1,26 @@
-import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import {Injectable} from '@angular/core';
+import {User} from '../../user/classes/user';
+import {Workplace} from '../../workplace/classes/workplace';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserService implements User {
+export class UserService {
+  user: User;
 
-  id: string;
-  profile_img: string;
-
-  constructor() { }
-
-  setUserData(id, profile_img) {
-    this.id = id;
-    this.profile_img = profile_img;
+  constructor() {
   }
 
+  initUser(user: User) {
+    this.user = user;
+  }
+
+  getToken() {
+    return this.user.token;
+  }
+
+  getWorkplace(): Workplace {
+    return this.user.humanResource.workplace;
+  }
 }

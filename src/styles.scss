@@ -1,39 +1,8 @@
 @import '~@angular/material/theming';
+@import '~src/global_vars';
+@import '~src/global_classes';
 
 @include mat-core();
-
-$mat-guinda: (
-  50: #ffcdd2,
-  100: #ef9a9a,
-  200: #e57373,
-  300: #ef5350,
-  400: #f44336,
-  500: #e53935,
-  600: #d32f2f,
-  700: #c62828,
-  800: #77455a,
-  900: #7e0000,
-  A100: #ff8a80,
-  A200: #ff5252,
-  A400: #ff1744,
-  A700: #d50000,
-  contrast: (
-    50: $black-87-opacity,
-    100: $black-87-opacity,
-    200: $black-87-opacity,
-    300: $black-87-opacity,
-    400: $black-87-opacity,
-    500: white,
-    600: white,
-    700: white,
-    800: $white-87-opacity,
-    900: $white-87-opacity,
-    A100: $black-87-opacity,
-    A200: white,
-    A400: white,
-    A700: white,
-  )
-);
 
 $app-primary: mat-palette($mat-pink, 900, 800, 900);
 //$app-accent: mat-palette($mat-blue, 800, 800, 900);
@@ -44,21 +13,40 @@ $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: $back-color;
+}
 
 //* {
 //  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 //  color: gray;
 //}
 
-.bold {
-  font-weight: bold;
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
 }
 
-.not_selectable {
-  user-select: none;
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
 }
 
-.pointer {
-  cursor: pointer;
+::-webkit-scrollbar-thumb {
+
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

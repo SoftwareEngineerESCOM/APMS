@@ -1,0 +1,42 @@
+<form [formGroup]="studyPlanForm" (ngSubmit)="submit()">
+  <mat-form-field>
+    <mat-select formControlName="academicProgram" [placeholder]="labels.academicProgram">
+      <ngx-mat-select-search [formControl]="academicProgramsCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let academicProgram of filteredAcademicPrograms | async" [value]="academicProgram.value">
+        {{academicProgram.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.year}}</mat-label>
+    <input matInput formControlName="year" type="text" placeholder="{{placeholders.year}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="mode" [placeholder]="labels.mode">
+      <ngx-mat-select-search [formControl]="searchModesCtrl" [placeholderLabel]="placeholders.search"
+                             [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
+      <mat-option *ngFor="let mode of filteredModes | async" [value]="mode.value">
+        {{mode.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.totalTEPICCredits}}</mat-label>
+    <input matInput formControlName="totalTEPICCredits" type="text" placeholder="{{placeholders.totalTEPICCredits}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.totalSATCACredits}}</mat-label>
+    <input matInput formControlName="totalSATCACredits" type="text" placeholder="{{placeholders.totalSATCACredits}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.totalTheoryHours}}</mat-label>
+    <input matInput formControlName="totalTheoryHours" type="text" placeholder="{{placeholders.totalTheoryHours}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.totalPracticeHours}}</mat-label>
+    <input matInput formControlName="totalPracticeHours" type="text"
+           placeholder="{{placeholders.totalPracticeHours}}">
+  </mat-form-field>
+  <button type="submit" style="display: none;"></button>
+</form>

@@ -7,7 +7,8 @@ export const environment = {
 };
 
 export const APP_NAME = 'Sistema Gestor de Programas Academicos';
-
+// export const SERVER_URL = 'https://apmsrest.herokuapp.com/';
+export const SERVER_URL = 'http//localhost: ';
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

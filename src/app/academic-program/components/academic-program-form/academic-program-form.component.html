@@ -1,0 +1,11 @@
+<form [formGroup]="academicProgramForm" (ngSubmit)="onSubmit.emit(true)">
+  <mat-form-field>
+    <mat-label>{{labels.name}}</mat-label>
+    <input matInput formControlName="name" type="text" placeholder="{{placeholders.name}}">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>{{labels.titleName}}</mat-label>
+    <input matInput formControlName="titleName" type="text" placeholder="{{placeholders.titleName}}">
+  </mat-form-field>
+  <button type="submit" style="display: none;"></button>
+</form>

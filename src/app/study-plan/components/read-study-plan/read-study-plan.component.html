@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="c_container">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header style="justify-content: center;">
+          <mat-card-title class="title-size">
+            {{labels.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item>
+              {{labels.workplace}}: {{studyPlan.academicProgram.workplace.name}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              {{labels.academicProgram}}: {{studyPlan.academicProgram.name}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              {{labels.titleName}}: {{studyPlan.academicProgram.titleName}}
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              {{labels.academicProgramId}}: {{studyPlan.academicProgram.id}}
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="vertical_space"></div>
+    <div class="table_container">
+      <table mat-table [dataSource]="studyPlanSource">
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef>{{labels.year}}</th>
+          <td mat-cell *matCellDef="let element">{{element.year}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mode">
+          <th mat-header-cell *matHeaderCellDef>{{labels.mode}}</th>
+          <td mat-cell *matCellDef="let element">{{element.mode}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalTEPICCredits">
+          <th mat-header-cell *matHeaderCellDef>{{labels.totalTEPICCredits}}</th>
+          <td mat-cell *matCellDef="let element">{{element.totalTEPICCredits}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalSATCACredits">
+          <th mat-header-cell *matHeaderCellDef>{{labels.totalSATCACredits}}</th>
+          <td mat-cell *matCellDef="let element">{{element.totalSATCACredits}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalTheoryHours">
+          <th mat-header-cell *matHeaderCellDef>{{labels.totalTheoryHours}}</th>
+          <td mat-cell *matCellDef="let element">{{element.totalTheoryHours}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="totalPracticeHours">
+          <th mat-header-cell *matHeaderCellDef>{{labels.totalPracticeHours}}</th>
+          <td mat-cell *matCellDef="let element">{{element.totalPracticeHours}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="edit">
+          <th mat-header-cell *matHeaderCellDef>{{labels.edit}}</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button (click)="edit(element.id)" color="accent">
+              <mat-icon>create</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <br>
+    <div class="semesters_container">
+      <app-find-semester [studyPlanId]="studyPlan.id"></app-find-semester>
+    </div>
+  </div>
+</div>
