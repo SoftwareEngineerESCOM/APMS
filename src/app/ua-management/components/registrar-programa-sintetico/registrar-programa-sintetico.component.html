@@ -1,0 +1,62 @@
+<div class="container">
+  <div>
+<mat-card class="myCard">
+  <mat-card-header class="myCardHeader">
+    <mat-card-title><h4>{{labels.pageTitle}}</h4></mat-card-title>
+    <mat-card-subtitle>{{labels.pageDescription}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <br>
+  <mat-card-content>
+    <mat-grid-list rowHeight="2em" [cols]="2">
+      <mat-grid-tile>
+        <mat-label>{{labels.academicUnit}}</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile>
+          <app-select-form-control [selectDataObject]="auSelect" (onValueChange)="setAu($event)"></app-select-form-control>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-label>{{labels.academicProgram}}</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-select-form-control [selectDataObject]="apSelect" (onValueChange)="setAp($event)" ></app-select-form-control>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-label>{{labels.learningUnit}}</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-select-form-control [selectDataObject]="luSelect" (onValueChange)="setLu($event)" ></app-select-form-control>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-label>{{labels.semester}}</mat-label>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <app-select-form-control [selectDataObject]="sSelect" (onValueChange)="setS($event)" ></app-select-form-control>
+      </mat-grid-tile>
+    </mat-grid-list><br>
+    <mat-divider></mat-divider> <br>
+    <mat-grid-list [cols]="1" rowHeight="2em">
+      <mat-grid-tile><h4>{{labels.subtitle2}}</h4></mat-grid-tile>
+      <mat-grid-tile>
+          <button mat-flat-button color="primary">{{labels.contents}} <mat-icon style="width: auto">launch</mat-icon></button>
+      </mat-grid-tile>
+    </mat-grid-list><br>
+    <mat-divider></mat-divider> <br>
+    <mat-grid-list [cols]="1" rowHeight="2em">
+      <mat-grid-tile><h4>{{labels.subtitle3}}</h4></mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-flat-button color="primary">{{labels.evalAndAcredit}} <mat-icon style="width: auto">launch</mat-icon></button>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <button mat-flat-button color="primary">{{labels.biblio}} <mat-icon style="width: auto">launch</mat-icon></button>
+      </mat-grid-tile>
+    </mat-grid-list>
+    <br><mat-divider></mat-divider><br>
+    <div style="float: right">
+    <button mat-button color="warn" >Cancelar</button>
+    <button mat-button color="primary" >Guardar</button>
+    </div>
+  </mat-card-content>
+</mat-card>
+  </div>
+</div>

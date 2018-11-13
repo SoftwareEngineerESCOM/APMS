@@ -19,7 +19,7 @@ export class AcademicProgramFormComponent implements OnInit {
 
   academicProgramForm: FormGroup;
 
-  constructor(private formService: FormService, private rest: RestService) {
+  constructor(private formService: FormService) {
   }
 
   ngOnInit() {

@@ -13,7 +13,8 @@
               <mat-select formControlName="workplace" [placeholder]="labels.workplace">
                 <ngx-mat-select-search [formControl]="searchAcademicUnitCtrl" [placeholderLabel]="placeholders.search"
                                        [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
-                <mat-option *ngFor="let academicUnit of filteredAcademicUnits | async" [value]="academicUnit">
+                <mat-option *ngFor="let academicUnit of filteredAcademicUnits | async" [value]="academicUnit"
+                            (click)="getAcademicProgramsByWorkplaceId(academicUnit.id)">
                   {{academicUnit.name}}
                 </mat-option>
               </mat-select>

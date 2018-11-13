@@ -23,7 +23,10 @@ export class CreateUserComponent implements OnInit {
   }
 
   submit() {
-    this.rest.request('post', 'User', this.userFormComponent.getUser());
+    this.rest.request('post', 'User', this.userFormComponent.getUser())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log('create', this.userFormComponent.getUser());
   }
 

@@ -1,10 +1,10 @@
-<form [formGroup]="studyPlanForm" (ngSubmit)="submit()">
+<form [formGroup]="studyPlanForm" (ngSubmit)="onSubmit.emit(true)">
   <mat-form-field>
     <mat-select formControlName="academicProgram" [placeholder]="labels.academicProgram">
-      <ngx-mat-select-search [formControl]="academicProgramsCtrl" [placeholderLabel]="placeholders.search"
+      <ngx-mat-select-search [formControl]="searchAcademicProgramCtrl" [placeholderLabel]="placeholders.search"
                              [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
-      <mat-option *ngFor="let academicProgram of filteredAcademicPrograms | async" [value]="academicProgram.value">
-        {{academicProgram.viewValue}}
+      <mat-option *ngFor="let academicProgram of filteredAcademicPrograms | async" [value]="academicProgram">
+        {{academicProgram.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
@@ -16,8 +16,8 @@
     <mat-select formControlName="mode" [placeholder]="labels.mode">
       <ngx-mat-select-search [formControl]="searchModesCtrl" [placeholderLabel]="placeholders.search"
                              [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
-      <mat-option *ngFor="let mode of filteredModes | async" [value]="mode.value">
-        {{mode.viewValue}}
+      <mat-option *ngFor="let mode of filteredModes | async" [value]="mode">
+        {{mode.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>

@@ -36,10 +36,6 @@ tr.mat-row:hover {
   background: #e6e6e6;
 }
 
-td.mat-cell:last-of-type {
-  background: white;
-}
-
 table {
   padding-bottom: 10px;
 }
@@ -51,4 +47,8 @@ td {
 
 .expanded {
   flex: 1;
+}
+
+.no-background-change {
+  background: white;
 }

@@ -42,10 +42,10 @@ export const menu = {
       ]),
     new Option('Gestionar Planes de Estudio', '', 'expand_more', true,
       [
-        new SubOption('Consultar', '/plandeestudios/consultar'),
-        new SubOption('Registrar', '/plandeestudios/crear'),
-        new SubOption('Editar', '/plandeestudios/actualizar'),
-        new SubOption('Leer', '/plandeestudios/leer')
+        new SubOption('Consultar', '/planesdeestudios/consultar'),
+        new SubOption('Registrar', '/planesdeestudios/registrar'),
+        new SubOption('Editar', '/planesdeestudios/editar/1'),
+        new SubOption('Leer', '/planesdeestudios/leer/1')
       ]),
     new Option('Gestionar Unidades de aprendizaje', undefined, 'expand_more', true,
       [

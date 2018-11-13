@@ -1,5 +1,5 @@
-import {SelectDataModelInterface, SelectOptionModelInterface} from '../../shared/interfaces/select-data-model';
 import {Observable} from 'rxjs';
+import {SelectDataModelInterface, SelectOptionModelInterface} from '../interfaces/select-data-model';
 
 export class SelectDataModel implements SelectDataModelInterface {
   disabled: boolean;

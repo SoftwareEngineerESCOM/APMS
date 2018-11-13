@@ -3,6 +3,7 @@ import {labels} from './read-study-plan.strings';
 import {StudyPlan} from '../../classes/study-plan';
 import {AcademicProgram} from '../../../academic-program/classes/academic-program';
 import {Workplace} from '../../../workplace/classes/workplace';
+import {StudyPlanMode} from '../../../study-plan-mode/classes/study-plan-mode';
 
 @Component({
   selector: 'app-read-study-plan',
@@ -15,7 +16,6 @@ export class ReadStudyPlanComponent implements OnInit {
 
   studyPlan = new StudyPlan(0,
     2018,
-    'Escolarizado',
     2.6,
     3.5,
     5.2,
@@ -25,7 +25,8 @@ export class ReadStudyPlanComponent implements OnInit {
       'Ingenieria en Sistemas Computacionales',
       'Ingeniero en Sistemas Computacionales',
       new Workplace(0, 'Escuela Superior de Computo', 'ESCOM')
-    )
+    ),
+    new StudyPlanMode(1, 'Escolarizado', 'Va a la escuela')
   );
 
   studyPlanSource = [

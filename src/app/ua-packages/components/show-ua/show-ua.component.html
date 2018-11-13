@@ -10,13 +10,7 @@
       <mat-grid-list cols="5" rowHeight="2em">
 
         <mat-grid-tile *ngFor="let selectObj of selectArray">
-          <mat-form-field>
-            <mat-select placeholder="{{selectObj.placeholder}}" disabled="{{selectObj.disabled}}">
-              <mat-option *ngFor="let option of selectObj.options$ | async" [value]="option.value">
-                {{option.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+          <app-select-form-control [selectDataObject]="selectObj"></app-select-form-control>
         </mat-grid-tile>
         <mat-grid-tile>
           <button mat-raised-button color="primary" >Buscar</button>
@@ -41,9 +35,9 @@
         </mat-grid-tile>
         <mat-grid-tile>
           <mat-form-field>
-            <input #newDL matInput [matDatepicker]="picker" placeholder="Fecha de entrega">
+            <input #newDL matInput [matDatepicker]="picker" placeholder="Choose a date">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
+            <mat-datepicker touchUi #picker></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
         <mat-grid-tile>

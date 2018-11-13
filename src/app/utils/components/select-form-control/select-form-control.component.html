@@ -1,0 +1,7 @@
+<mat-form-field>
+<mat-select  #matSelect (selectionChange)="returnVal(matSelect.value)" placeholder="{{selectDataObject.placeholder}}" disabled="{{selectDataObject.disabled}}">
+  <mat-option *ngFor="let option of selectDataObject.options$ | async" [value]="option.value">
+    {{option.viewValue}}
+  </mat-option>
+</mat-select>
+</mat-form-field>

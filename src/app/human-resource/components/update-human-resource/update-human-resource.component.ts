@@ -29,43 +29,13 @@ export class UpdateHumanResourceComponent implements OnInit {
         console.log(response);
         this.humanResourceFormComponent.initHumanResourceForm(response.payload as HumanResource);
       });
-    /*setTimeout(() => {
-      this.humanResourceFormComponent.initHumanResourceForm(
-        {
-          'id': 1,
-          'name': 'Sergio',
-          'firstSurname': 'Sanchez',
-          'secondSurname': 'Valencia',
-          'title': {
-            'id': 0,
-            'name': 'Ingeniero',
-            'abbreviation': 'Ing.',
-            'description': 'Se las ingenia.'
-          },
-          'position': {
-            'id': 0,
-            'name': 'Estudiante',
-            'abbreviation': 'Estd.',
-            'description': 'Se las ingenia x2.'
-          },
-          'workplace': {
-            'id': 1,
-            'name': 'ESCUELA SUPERIOR DE COMPUTO',
-            'abbreviation': 'ESCOM.',
-            'workplaceType': {
-              'id': 0,
-              'name': 'UNIDAD ACADEMICA',
-              'abbreviation': 'UA.',
-              'description': 'SE RIFA.'
-            }
-          }
-        }
-      );
-    }, 0);*/
   }
 
   submit() {
-    this.rest.request('patch', 'HumanResource', this.humanResourceFormComponent.getHumanResource());
+    this.rest.request('patch', 'HumanResource', this.humanResourceFormComponent.getHumanResource())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log(this.humanResourceFormComponent.getHumanResource());
   }
 

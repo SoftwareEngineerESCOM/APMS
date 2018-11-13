@@ -6,11 +6,13 @@
         <mat-card-subtitle>{{labels.formSubtitle}}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <!--<app-find-human-resource (idFill)="hrform.setId($event)"></app-find-human-resource>-->
-        <app-study-plan-form #spform [showIdField]="true" [method]="'post'"></app-study-plan-form>
+        <app-study-plan-form (onSubmit)="submit()"></app-study-plan-form>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-raised-button (click)="spform.submit()" color="primary">
+        <button mat-raised-button color="warn" (click)="cancel();">
+          {{labels.cancel}}
+        </button>
+        <button mat-raised-button (click)="submit()" color="primary">
           {{labels.submit}}
         </button>
       </mat-card-actions>

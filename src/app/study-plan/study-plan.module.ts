@@ -26,6 +26,10 @@ import {SemesterModule} from '../semester/semester.module';
     CreateStudyPlanComponent,
     UpdateStudyPlanComponent,
     ReadStudyPlanComponent,
-    FindStudyPlanComponent]
+    FindStudyPlanComponent
+  ],
+  exports: [
+    FindStudyPlanComponent
+  ]
 })
 export class StudyPlanModule { }

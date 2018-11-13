@@ -29,19 +29,19 @@ export class RestService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json; charset=UTF-8'
-      }),
-      params: (new HttpParams()).append('body', JSON.stringify(body))
+      })
+      // params: (new HttpParams()).append('body', JSON.stringify(body))
     };
 
     switch (method.toLowerCase()) {
       case 'get':
         return this.http.get<RESTResponse>(SERVER_URL + endpoint, httpOptions);
       case 'post':
-        return this.http.post<RESTResponse>(SERVER_URL + endpoint, null, httpOptions);
+        return this.http.post<RESTResponse>(SERVER_URL + endpoint, body, httpOptions);
       case 'put':
-        return this.http.put<RESTResponse>(SERVER_URL + endpoint, null, httpOptions);
+        return this.http.put<RESTResponse>(SERVER_URL + endpoint,  body, httpOptions);
       case 'patch':
-        return this.http.patch<RESTResponse>(SERVER_URL + endpoint, null, httpOptions);
+        return this.http.patch<RESTResponse>(SERVER_URL + endpoint, body, httpOptions);
       case 'delete':
         return this.http.delete<RESTResponse>(SERVER_URL + endpoint, httpOptions);
       default:

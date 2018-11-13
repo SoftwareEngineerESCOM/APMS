@@ -8,6 +8,7 @@ import {Position} from '../../../position/classes/position';
 import {MatTableDataSource} from '@angular/material';
 import {RestService} from '../../../shared/services/rest.service';
 import {Router} from '@angular/router';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-find-human-resource',
@@ -43,15 +44,16 @@ export class FindHumanResourceComponent implements OnInit {
   humanResources: HumanResource[];
   humanResourcesDataSource: MatTableDataSource<HumanResource>;
 
-  constructor(private formService: FormService, private rest: RestService, private router: Router) {
+  constructor(private formService: FormService, private rest: RestService, private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.humanResourcesDataSource = new MatTableDataSource<HumanResource>(this.humanResources);
-    this.getHumanResources();
+    this.getHumanResourcesByWorkplaceId();
     this.getPositions();
     this.form = new FormGroup({
-      position: new FormControl({}, Validators.required)
+      position: new FormControl({})
     });
   }
 
@@ -59,24 +61,36 @@ export class FindHumanResourceComponent implements OnInit {
     this.rest.request('get', 'Position', undefined).subscribe(response => {
       this.positions = response.payload as Position[];
       this.filteredPositions = this.formService.getFilteredItems(this.searchPositionsCtrl, this.positions);
+      console.log('positions', this.positions);
     });
   }
 
-  getHumanResources() {
-    this.rest.request('get', 'HumanResource', undefined).subscribe(response => {
+  getHumanResourcesByWorkplaceId() {
+    this.rest.request(
+      'get',
+      'HumanResource/HumanResourcesByWorkplaceId/' + this.userService.getWorkplace().id,
+      undefined)
+      .subscribe(response => {
       this.humanResources = response.payload as HumanResource[];
       this.humanResourcesDataSource = new MatTableDataSource<HumanResource>(this.humanResources);
+      console.log('human resources', this.humanResources);
     });
   }
 
   getHumanResourcesByPositionId(positionId) {
-    this.rest.request('get', 'HumanResource/HumanResourcesByPositionId/' + positionId, undefined).subscribe(response => {
-      this.humanResources = response.payload as HumanResource[];
-    });
+    this.rest.request(
+      'get',
+      'HumanResource/HumanResourcesByWorkplaceIdAndPositionId/' + this.userService.getWorkplace().id + '/' + positionId,
+      undefined)
+      .subscribe(response => {
+        console.log(response);
+        this.humanResources = response.payload as HumanResource[];
+        this.humanResourcesDataSource = new MatTableDataSource<HumanResource>(this.humanResources);
+      });
   }
 
   edit(id) {
-    this.router.navigate(['/recursoshumanos/' + id]);
+    this.router.navigate(['/recursoshumanos/editar/' + id]);
   }
 
   view(id) {
@@ -90,7 +104,7 @@ export class FindHumanResourceComponent implements OnInit {
   delete(id) {
     this.rest.request('delete', 'HumanResource/' + id, undefined).subscribe(response => {
       console.log(response);
-      this.getHumanResources();
+      this.getHumanResourcesByWorkplaceId();
     });
   }
 

@@ -12,7 +12,7 @@ export const academicProgramRoutes: Routes = [
   {path: base + 'registrar', component: CreateAcademicProgramComponent},
   {path: base + 'consultar', component: FindAcademicProgramComponent},
   {path: base + 'editar/:id', component: UpdateAcademicProgramComponent},
-  {path: base + 'leer', component: ReadAcademicProgramComponent}
+  {path: base + 'leer/:id', component: ReadAcademicProgramComponent}
 ];
 
 @NgModule({

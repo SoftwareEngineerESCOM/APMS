@@ -11,7 +11,7 @@ export class ReadAcademicProgramComponent implements OnInit {
 
   academicProgramId: number;
   constructor(private activatedRoute: ActivatedRoute, private rest: RestService) {
-    this.academicProgramId = this.activatedRoute.snapshot.params['id'];
+    this.academicProgramId = parseInt(this.activatedRoute.snapshot.params['id']);
   }
 
   ngOnInit() {

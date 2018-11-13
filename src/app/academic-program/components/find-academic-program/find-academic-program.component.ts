@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {labels, placeholders} from './find-academic-program.strings';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {FormService} from '../../../shared/services/form.service';
 import {AcademicProgram} from '../../classes/academic-program';
@@ -39,28 +39,29 @@ export class FindAcademicProgramComponent implements OnInit {
   constructor(private formService: FormService, private rest: RestService, private router: Router,
               private userService: UserService) {
     this.form = new FormGroup({
-      workplace: new FormControl({value: 2, disabled: true}, Validators.required)
+      workplace: new FormControl({value: 0, disabled: true})
     });
   }
 
   ngOnInit() {
     this.getAcademicUnits();
-    this.getAcademicProgramsByWorkplaceId();
+    this.getAcademicProgramsByWorkplaceId(this.userService.getWorkplace().id);
   }
 
   getAcademicUnits() {
-    this.rest.request('get', 'AcademicUnit', undefined).subscribe(response => {
-      this.academicUnits = response.payload as Workplace[];
-      this.filteredAcademicUnits = this.formService.getFilteredItems(this.searchAcademicUnitCtrl, this.academicUnits);
-      const defaultComboBoxOption = this.academicUnits.find(opt => opt.id === this.userService.getWorkplace().id);
-      this.form = new FormGroup({
-        workplace: new FormControl({value: defaultComboBoxOption, disabled: true}, Validators.required)
+    this.rest.request('get', 'Workplace', undefined)
+      .subscribe(response => {
+        this.academicUnits = response.payload as Workplace[];
+        this.filteredAcademicUnits = this.formService.getFilteredItems(this.searchAcademicUnitCtrl, this.academicUnits);
+        const defaultComboBoxOption = this.academicUnits.find(opt => opt.id === this.userService.getWorkplace().id);
+        this.form = new FormGroup({
+          workplace: new FormControl({value: defaultComboBoxOption, disabled: true})
+        });
       });
-    });
   }
 
-  getAcademicProgramsByWorkplaceId() {
-    this.rest.request('get', 'AcademicProgram/AcademicProgramsByWorkplaceId/' + this.userService.getWorkplace().id,
+  getAcademicProgramsByWorkplaceId(workplaceId) {
+    this.rest.request('get', 'AcademicProgram/AcademicProgramsByWorkPlaceId/' + workplaceId,
       undefined).subscribe(response => {
       this.academicPrograms = response.payload as AcademicProgram[];
     });
@@ -74,7 +75,7 @@ export class FindAcademicProgramComponent implements OnInit {
   }
 
   view(id) {
-    this.router.navigate(['planesdeestudio/consultar/' + id]);
+    this.router.navigate(['programasacademicos/leer/' + id]);
   }
 
   add() {

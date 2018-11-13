@@ -7,6 +7,7 @@ import {StudyPlan} from '../../classes/study-plan';
 import {RestService} from '../../../shared/services/rest.service';
 import {AcademicProgram} from '../../../academic-program/classes/academic-program';
 import {UserService} from '../../../shared/services/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-find-study-plan',
@@ -22,9 +23,7 @@ export class FindStudyPlanComponent implements OnInit {
 
   searchAcademicProgramCtrl = new FormControl();
 
-  form = new FormGroup({
-    academicProgram: new FormControl({disabled: true}, Validators.required)
-  });
+  form: FormGroup;
 
   academicPrograms: AcademicProgram[];
   filteredAcademicPrograms: Observable<AcademicProgram[]>;
@@ -38,32 +37,33 @@ export class FindStudyPlanComponent implements OnInit {
 
   studyPlans: StudyPlan[];
 
-  constructor(private formService: FormService, private rest: RestService, private userService: UserService) {
+  constructor(private formService: FormService, private rest: RestService, private userService: UserService,
+              private router: Router) {
     this.form = new FormGroup({
-      academicProgram: new FormControl()
+      academicProgram: new FormControl({})
     });
   }
 
   ngOnInit() {
     this.getAcademicProgramsByWorkplaceId();
-    this.getStudyPlansByAcademicProgramId();
+    this.getStudyPlansByAcademicProgramId(this.academicProgramId);
   }
 
   getAcademicProgramsByWorkplaceId() {
-    this.rest.request('get', 'AcademicProgram/AcademicProgramsByWorkplaceId/' + this.userService.getWorkplace().id,
+    this.rest.request('get', 'AcademicProgram/AcademicProgramsByWorkPlaceId/' + this.userService.getWorkplace().id,
       undefined)
       .subscribe(response => {
         this.academicPrograms = response.payload as AcademicProgram[];
         this.filteredAcademicPrograms = this.formService.getFilteredItems(this.searchAcademicProgramCtrl, this.academicPrograms);
         const defaultComboBoxOption = this.academicPrograms.find(opt => opt.id === this.academicProgramId);
         this.form = new FormGroup({
-          academicProgram: new FormControl({value: defaultComboBoxOption, disabled: true}, Validators.required)
+          academicProgram: new FormControl({value: defaultComboBoxOption, disabled: true})
         });
       });
   }
 
-  getStudyPlansByAcademicProgramId() {
-    this.rest.request('get', 'StudyPlan/StudyPlansByAcademicProgramId/' + this.academicProgramId, undefined)
+  getStudyPlansByAcademicProgramId(academicProgramId) {
+    this.rest.request('get', 'StudyPlan/StudyPlansByAcademicProgramId/' + academicProgramId, undefined)
       .subscribe(response => {
         console.log(response);
         this.studyPlans = response.payload as StudyPlan[];
@@ -74,14 +74,17 @@ export class FindStudyPlanComponent implements OnInit {
   }
 
   edit(id) {
+    this.router.navigate(['planesdeestudios/editar/' + id])
     console.log('edit: ' + id);
   }
 
   view(id) {
+    this.router.navigate(['planesdeestudios/leer/' + id]);
     console.log('view: ' + id);
   }
 
   add() {
+    this.router.navigate(['planesdeestudios/registrar']);
     console.log('add');
   }
 

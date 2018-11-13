@@ -27,8 +27,7 @@ export class FormService {
     console.log('model: ', model);
     const groupObject = {};
     for (const key of Object.keys(model)) {
-      console.log('typeof ' + key, typeof model[key]);
-      if (typeof model[key] === 'object' || typeof model[key] === 'undefined') {
+      if (typeof model[key] === 'undefined') {
         // groupObject[key] = this.createFormFromObject(model[key]);
         groupObject[key] = this.getDefaultValue(model[key]);
       } else {

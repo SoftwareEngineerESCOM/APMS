@@ -8,6 +8,6 @@ export interface SelectDataModelInterface {
 }
 
 export interface SelectOptionModelInterface {
-  value: string;
+  value: any;
   viewValue: string;
 }

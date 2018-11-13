@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {labels} from './show-ua.strings';
 import {Observable, of} from 'rxjs';
-import {SelectDataModel} from '../../classes/SelectDataModel';
-import {SelectOptionModel} from '../../classes/SelectOptionModel';
+import {SelectDataModel} from '../../../utils/components/select-form-control/classes/SelectDataModel';
+import {SelectOptionModel} from '../../../utils/components/select-form-control/classes/SelectOptionModel';
 import {LearningUnitInfo} from '../../classes/LearningUnitInfo';
-import {forEach} from '@angular/router/src/utils/collection';
 import {ActionButton} from '../../classes/ActionButton';
+import {LocalStorage} from '../../../shared/classes/LocalStorage';
 
 @Component({
   selector: 'app-show-ua',
@@ -32,6 +32,8 @@ export class ShowUaComponent implements OnInit {
   optionsSemestre: SelectOptionModel[];
   optionsNoRevision: SelectOptionModel[];
   rowActns: ActionButton[];
+
+
 
   constructor() {
 
@@ -75,16 +77,18 @@ export class ShowUaComponent implements OnInit {
     );
   }
   addUaInf(uaID: string, date: string, analID: string) {
-    const nRow = new LearningUnitInfo(null, uaID, date, analID, 'Progresando...')
+    const nRow = new LearningUnitInfo(null, uaID, date, analID, 'Progresando...');
+    LocalStorage.saveObject('test', nRow);
     this.tableContent.push(nRow);
   }
+
   clearFields(...fields: HTMLInputElement[]) {
     for ( const field of fields) {
       field.value = null;
     }
   }
-  deleteContentWithId(id: string = null)
-  {
+
+  deleteContentWithId(id: string = null) {
     alert('hola mundo' + id);
   }
 

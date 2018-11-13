@@ -9,13 +9,15 @@ import { AcademicProgramFormComponent } from './components/academic-program-form
 import {MaterialModule} from '../shared/modules/material/material.module';
 import {ReactiveFormsModule} from '@angular/forms';
 import { FindAcademicProgramComponent } from './components/find-academic-program/find-academic-program.component';
+import {StudyPlanModule} from '../study-plan/study-plan.module';
 
 @NgModule({
   imports: [
     CommonModule,
     AcademicProgramRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StudyPlanModule
   ],
   declarations: [
     CreateAcademicProgramComponent,

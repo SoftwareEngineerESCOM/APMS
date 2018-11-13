@@ -5,12 +5,12 @@ import {UpdateStudyPlanComponent} from './components/update-study-plan/update-st
 import {ReadStudyPlanComponent} from './components/read-study-plan/read-study-plan.component';
 import {FindStudyPlanComponent} from './components/find-study-plan/find-study-plan.component';
 
-const base = 'plandeestudios/';
+const base = 'planesdeestudios/';
 
 export const studyPlanRoutes: Routes = [
-  {path: base + 'crear', component: CreateStudyPlanComponent},
-  {path: base + 'leer', component: ReadStudyPlanComponent},
-  {path: base + 'actualizar', component: UpdateStudyPlanComponent},
+  {path: base + 'registrar', component: CreateStudyPlanComponent},
+  {path: base + 'leer/:id', component: ReadStudyPlanComponent},
+  {path: base + 'editar/:id', component: UpdateStudyPlanComponent},
   {path: base + 'consultar', component: FindStudyPlanComponent}
 ];
 

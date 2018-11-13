@@ -11,10 +11,12 @@
           <form [formGroup]="form" (ngSubmit)="submit()">
             <mat-form-field>
               <mat-select formControlName="academicProgram" [placeholder]="labels.academicProgram">
-                <ngx-mat-select-search [formControl]="searchAcademicProgramCtrl" [placeholderLabel]="placeholders.search"
+                <ngx-mat-select-search [formControl]="searchAcademicProgramCtrl"
+                                       [placeholderLabel]="placeholders.search"
                                        [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
-                <mat-option *ngFor="let academicProgram of filteredAcademicPrograms | async" [value]="academicProgram">
-                  {{academicProgram.viewValue}}
+                <mat-option *ngFor="let academicProgram of filteredAcademicPrograms | async" [value]="academicProgram"
+                            (click)="getStudyPlansByAcademicProgramId(academicProgram.id)">
+                  {{academicProgram.name}}
                 </mat-option>
               </mat-select>
             </mat-form-field>
@@ -38,7 +40,7 @@
 
         <ng-container matColumnDef="mode">
           <th mat-header-cell *matHeaderCellDef>{{labels.mode}}</th>
-          <td mat-cell *matCellDef="let element" (click)="view(element.id)">{{element.mode}}</td>
+          <td mat-cell *matCellDef="let element" (click)="view(element.id)">{{element.mode.name}}</td>
         </ng-container>
 
         <ng-container matColumnDef="edit">

@@ -14,6 +14,8 @@ import {LearningUnitModule} from './learning-unit/learning-unit.module';
 import {StudyPlanModule} from './study-plan/study-plan.module';
 import {SemesterModule} from './semester/semester.module';
 import {AcademicProgramModule} from './academic-program/academic-program.module';
+import {UaManagementModule} from './ua-management/ua-management.module';
+import {UtilsModule} from './utils/utils.module';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import {AcademicProgramModule} from './academic-program/academic-program.module'
     WYSIWYGModule,
     HumanResourceModule,
     UaPackagesModule,
+    UaManagementModule,
     UserModule,
     LearningUnitModule,
     StudyPlanModule,

@@ -1,6 +1,7 @@
 import {ComboBoxOption} from '../../../shared/classes/combo-box-option';
 import {StudyPlan} from '../../classes/study-plan';
 import {AcademicProgram} from '../../../academic-program/classes/academic-program';
+import {StudyPlanMode} from '../../../study-plan-mode/classes/study-plan-mode';
 
 export const labels = {
   notFound: '-- No se encontraron opciones --',
@@ -25,29 +26,29 @@ export const academicPrograms = [
 export const studyPlans = [
   new StudyPlan(0,
     2018,
-    'Escolarizado',
     2.6,
     3.5,
     5.2,
     3.0,
-    new AcademicProgram(0)
+    new AcademicProgram(1),
+    new StudyPlanMode(1, 'Escolarizado', 'Va a la escuela')
   ),
   new StudyPlan(0,
     2004,
-    'Escolarizado',
     2.6,
     3.5,
     5.2,
     3.0,
-    new AcademicProgram(0)
+    new AcademicProgram(0),
+    new StudyPlanMode(1, 'Escolarizado', 'Va a la escuela')
   ),
   new StudyPlan(0,
     2004,
-    'No Escolarizado',
     2.6,
     3.5,
     5.2,
     3.0,
-    new AcademicProgram(0)
+    new AcademicProgram(0),
+    new StudyPlanMode(1, 'No Escolarizado', 'Va a la escuela')
   )
 ];

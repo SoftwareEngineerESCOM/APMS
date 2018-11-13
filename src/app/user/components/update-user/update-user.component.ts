@@ -23,54 +23,18 @@ export class UpdateUserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rest.request('get', '/User/' + this.userId, undefined)
+    this.rest.request('get', 'User/' + this.userId, undefined)
       .subscribe((response: RESTResponse) => {
+        console.log('userrest', response);
         this.userFormComponent.initUserForm(response.payload as User);
       });
-    /*setTimeout(() => {
-      this.userFormComponent.initUserForm(
-        {
-          id: 0,
-          token: '',
-          password: '1234',
-          isAccountBlocked: false,
-          humanResource: {
-            'id': 1,
-            'name': 'Sergio',
-            'firstSurname': 'Sanchez',
-            'secondSurname': 'Valencia',
-            'title': {
-              'id': 0,
-              'name': 'Ingeniero',
-              'abbreviation': 'Ing.',
-              'description': 'Se las ingenia.'
-            },
-            'position': {
-              'id': 0,
-              'name': 'Estudiante',
-              'abbreviation': 'Estd.',
-              'description': 'Se las ingenia x2.'
-            },
-            'workplace': {
-              'id': 1,
-              'name': 'ESCUELA SUPERIOR DE COMPUTO',
-              'abbreviation': 'ESCOM.',
-              'workplaceType': {
-                'id': 0,
-                'name': 'UNIDAD ACADEMICA',
-                'abbreviation': 'UA.',
-                'description': 'SE RIFA.'
-              }
-            }
-          },
-          'roles': []
-        }
-      );
-    }, 0);*/
   }
 
   submit() {
-    this.rest.request('patch', 'User', this.userFormComponent.getUser());
+    this.rest.request('patch', 'User', this.userFormComponent.getUser())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log('update:', this.userFormComponent.getUser());
   }
 

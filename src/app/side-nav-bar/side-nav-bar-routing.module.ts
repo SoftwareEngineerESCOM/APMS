@@ -10,11 +10,13 @@ import {learningUnitRoutes} from '../learning-unit/learning-unit-routing.module'
 import {studyPlanRoutes} from '../study-plan/study-plan-routing.module';
 import {semesterRoutes} from '../semester/semester-routing.module';
 import {academicProgramRoutes} from '../academic-program/academic-program-routing.module';
+import {UaManagementRoutes} from '../ua-management/ua-management-routing.module';
 
 const childrenRoutes = [
   ...wysiwygRoutes,
   ...humanResourceRoutes,
   ...UaPackagesRoutes,
+  ...UaManagementRoutes,
   ...userRoutes,
   ...learningUnitRoutes,
   ...studyPlanRoutes,

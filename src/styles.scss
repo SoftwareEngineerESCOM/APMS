@@ -1,6 +1,5 @@
 @import '~@angular/material/theming';
 @import '~src/global_vars';
-@import '~src/global_classes';
 
 @include mat-core();
 
@@ -50,3 +49,4 @@ body {
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
+

@@ -45,8 +45,10 @@ export class HumanResourceFormComponent implements OnInit {
 
   getPositions() {
     this.rest.request('get', 'Position', undefined).subscribe(response => {
+      console.log('positions: ', response);
       this.positions = response.payload as Position[];
       this.filteredPositions = this.formService.getFilteredItems(this.searchPositionsCtrl, this.positions);
+      console.log(this.humanResourceForm.get('position').value);
       const positionOpt = this.positions.find(opt => opt.id === this.humanResourceForm.get('position').value['id']);
       this.humanResourceForm.get('position').setValue(positionOpt);
     });
@@ -71,6 +73,7 @@ export class HumanResourceFormComponent implements OnInit {
   }
 
   initHumanResourceForm(humanResource: HumanResource) {
+    console.log('human resource', humanResource);
     this.humanResourceForm = this.formService.createFormFromObject(humanResource);
     this.getPositions();
     this.getTitles();

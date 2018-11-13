@@ -8,6 +8,7 @@ import {MatTableDataSource} from '@angular/material';
 import {Position} from '../../../position/classes/position';
 import {RestService} from '../../../shared/services/rest.service';
 import {Router} from '@angular/router';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-find-user',
@@ -43,16 +44,16 @@ export class FindUserComponent implements OnInit {
   users: User[];
   usersDataSource: MatTableDataSource<User>;
 
-  constructor(private formService: FormService, private rest: RestService, private router: Router) {
+  constructor(private formService: FormService, private rest: RestService, private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit() {
     this.usersDataSource = new MatTableDataSource<User>(this.users);
-    this.filteredPositions = this.formService.getFilteredItems(this.searchPositionsCtrl, this.positions);
-    this.getUsers();
+    this.getUsersByWorkplaceId();
     this.getPositions();
     this.form = new FormGroup({
-      position: new FormControl({}, Validators.required)
+      position: new FormControl({})
     });
   }
 
@@ -66,20 +67,32 @@ export class FindUserComponent implements OnInit {
   getPositions() {
     this.rest.request('get', 'Position', undefined).subscribe(response => {
       this.positions = response.payload as Position[];
+      this.filteredPositions = this.formService.getFilteredItems(this.searchPositionsCtrl, this.positions);
     });
   }
 
   getUsersByPositionId(positionId) {
-    this.rest.request('get', 'User/UsersByPositionId/' + positionId, undefined).subscribe(response => {
-      this.users = response.payload as User[];
-    });
+    console.log('positionId: ' + positionId);
+    this.rest.request('get', 'User/UsersByWorkplaceIdAndPositionId/' + this.userService.getWorkplace().id + '/' + positionId, undefined)
+      .subscribe(response => {
+        this.users = response.payload as User[];
+        this.usersDataSource = new MatTableDataSource<User>(this.users);
+      });
+  }
+
+  getUsersByWorkplaceId() {
+    this.rest.request('get', 'User/UsersByWorkplaceId/' + this.userService.getWorkplace().id, undefined)
+      .subscribe(response => {
+        this.users = response.payload as User[];
+        this.usersDataSource = new MatTableDataSource<User>(this.users);
+      });
   }
 
   submit() {
   }
 
   edit(id) {
-    this.router.navigate(['/usuarios/editar' + id]);
+    this.router.navigate(['/usuarios/editar/' + id]);
     console.log('edit: ' + id);
   }
 

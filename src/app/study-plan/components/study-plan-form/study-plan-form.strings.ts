@@ -22,9 +22,9 @@ export const placeholders = {
 };
 
 export const modes = [
-  new ComboBoxOption(0, 'Escolarizada'),
-  new ComboBoxOption(1, 'No Escolarizada'),
-  new ComboBoxOption(2, 'Mixta')
+  'Escolarizado',
+  'No Escolarizada',
+  'Mixta'
 ];
 
 export const academicPrograms = [

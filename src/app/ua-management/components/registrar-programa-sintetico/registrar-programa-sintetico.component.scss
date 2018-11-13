@@ -1,0 +1,20 @@
+@import '~src/global_vars';
+
+.container{
+  display: flex;
+}
+.myCard{
+  position: fixed;
+  width: 48vw;
+  margin-top: 2em;
+  margin-left: 25vw;
+  margin-right: 23vw;
+  height: auto;
+}
+
+mat-grid-tile *{
+  width: 95%;
+
+}
+
+

@@ -23,7 +23,10 @@ export class CreateHumanResourceComponent implements OnInit {
   }
 
   submit() {
-    this.rest.request('post', 'HumanResource', this.humanResourceFormComponent.getHumanResource());
+    this.rest.request('post', 'HumanResource', this.humanResourceFormComponent.getHumanResource())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log(this.humanResourceFormComponent.getHumanResource());
   }
 

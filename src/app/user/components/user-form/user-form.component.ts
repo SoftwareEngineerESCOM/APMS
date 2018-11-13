@@ -33,6 +33,7 @@ export class UserFormComponent implements OnInit {
   }
 
   initUserForm(user: User) {
+    console.log('user', user);
     this.humanResourceFormComponent.initHumanResourceForm(user.humanResource);
     this.userForm = this.formService.createFormFromObject(user);
   }
