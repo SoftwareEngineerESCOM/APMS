@@ -50,7 +50,7 @@ const us: User = {
       description: 'Se las ingenia x2.'
     },
     workplace: {
-      id: 1,
+      id: 15,
       name: 'ESCUELA SUPERIOR DE COMPUTO',
       abbreviation: 'ESCOM.',
       workplaceType: {
