@@ -1,41 +1,46 @@
 {
   "/Position/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/Title/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/WorkplaceType/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/Workplace/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/HumanResource/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/User/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/AcademicProgram/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   },
   "/StudyPlan/*": {
-    "target": "http://localhost:8080",
+    "target": "https://apmsrest.herokuapp.com/",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/LearningUnit/*": {
+    "target": "https://apmsrest.herokuapp.com/",
     "secure": false,
     "changeOrigin": true
   }
