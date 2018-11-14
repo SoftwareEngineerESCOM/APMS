@@ -11,6 +11,7 @@ import {studyPlanRoutes} from '../study-plan/study-plan-routing.module';
 import {semesterRoutes} from '../semester/semester-routing.module';
 import {academicProgramRoutes} from '../academic-program/academic-program-routing.module';
 import {UaManagementRoutes} from '../ua-management/ua-management-routing.module';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
 
 const childrenRoutes = [
   ...wysiwygRoutes,
@@ -25,7 +26,7 @@ const childrenRoutes = [
 ];
 
 const routes: Routes = [
-  {path: '', component: SideNavComponent, children: childrenRoutes}
+  {path: '', component: SideNavComponent, children: childrenRoutes, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

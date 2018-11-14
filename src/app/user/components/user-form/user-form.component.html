@@ -4,7 +4,7 @@
     <mat-label>{{labels.password}}</mat-label>
     <input matInput formControlName="password" type="password" placeholder="{{placeholders.password}}">
   </mat-form-field>
-  <!--<mat-accordion>
+  <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-description>
@@ -12,9 +12,10 @@
         </mat-panel-description>
       </mat-expansion-panel-header>
       <mat-checkbox [formControl]="userForm.controls['isAccountBlocked']" class="example-margin">
-        {{labels.access}}
+        <!--{{labels.access}}-->
+        Analista
       </mat-checkbox>
     </mat-expansion-panel>
-  </mat-accordion>-->
+  </mat-accordion>
   <button type="submit" style="display: none;"></button>
 </form>
