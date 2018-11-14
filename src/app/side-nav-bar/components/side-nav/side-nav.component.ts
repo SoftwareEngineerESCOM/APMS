@@ -1,6 +1,7 @@
 import {Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {labels, menu} from './side-nav.strings';
 import {Router} from '@angular/router';
+import {AuthService} from '../../../auth/services/auth.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -20,7 +21,7 @@ export class SideNavComponent implements OnInit {
   chosenItem = -1;
   chosenSubItem = -1;
 
-  constructor(private renderer: Renderer2, private router: Router) {
+  constructor(private renderer: Renderer2, private router: Router, private authService: AuthService) {
     this.onResize();
   }
 
@@ -59,7 +60,10 @@ export class SideNavComponent implements OnInit {
       return;
     }
     this.router.navigate([path]);
+  }
 
+  logout() {
+    this.authService.logout();
   }
 
 }

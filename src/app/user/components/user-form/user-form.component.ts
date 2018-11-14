@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {labels, placeholders} from './user-form.strings';
-import {FormGroup} from '@angular/forms';
+import {FormGroup, Validators} from '@angular/forms';
 import {FormService} from '../../../shared/services/form.service';
 import {User} from '../../classes/user';
 import {HumanResourceFormComponent} from '../../../human-resource/components/human-resource-form/human-resource-form.component';
@@ -36,6 +36,9 @@ export class UserFormComponent implements OnInit {
     console.log('user', user);
     this.humanResourceFormComponent.initHumanResourceForm(user.humanResource);
     this.userForm = this.formService.createFormFromObject(user);
+    this.userForm.get('password').setValidators([
+      Validators.minLength(6)
+    ]);
   }
 
 }

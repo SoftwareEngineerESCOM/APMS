@@ -15,7 +15,7 @@
                                        [placeholderLabel]="placeholders.search"
                                        [noEntriesFoundLabel]="labels.notFound"></ngx-mat-select-search>
                 <mat-option (click)="getHumanResourcesByWorkplaceId()">--Sin Filtro--</mat-option>
-                <mat-option *ngFor="let position of filteredPositions | async" [value]="position">
+                <mat-option *ngFor="let position of filteredPositions | async" [value]="position" (click)="getHumanResourcesByPositionId(position.id)">
                   {{position.name}}
                 </mat-option>
               </mat-select>

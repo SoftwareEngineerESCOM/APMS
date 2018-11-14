@@ -36,11 +36,19 @@ export class HumanResourceFormComponent implements OnInit {
 
   humanResourceForm: FormGroup;
 
+  submitted = false;
+
   constructor(private formService: FormService, private rest: RestService) {
     this.humanResourceForm = this.formService.createFormFromObject(new HumanResource());
   }
 
   ngOnInit() {
+  }
+
+  getHumanResourceFromApi(id) {
+    this.rest.request('get', 'HumanResource/' + id, undefined).subscribe(response => {
+      this.initHumanResourceForm(response.payload as HumanResource);
+    });
   }
 
   getPositions() {
@@ -78,9 +86,22 @@ export class HumanResourceFormComponent implements OnInit {
     this.getPositions();
     this.getTitles();
     this.getWorkplaces();
+    this.humanResourceForm.get('id').valueChanges.subscribe(input => {
+      if (input.toString().length === 10) {
+        this.getHumanResourceFromApi(input.toString());
+      }
+    });
   }
 
   getHumanResource(): HumanResource {
-    return this.humanResourceForm.value as HumanResource;
+    this.submitted = true;
+    if (this.humanResourceForm.invalid) {
+      this.submitted = false;
+      return undefined;
+    }
+
+    const hr = this.humanResourceForm.value as HumanResource;
+    hr.id = parseInt(hr.id.toString(), 10);
+    return hr;
   }
 }

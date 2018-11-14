@@ -31,7 +31,10 @@ export class UpdateAcademicProgramComponent implements OnInit {
   }
 
   submit() {
-    this.rest.request('patch', 'AcademicProgram', this.academicProgramFormComponent.getAcademicProgram());
+    this.rest.request('patch', 'AcademicProgram', this.academicProgramFormComponent.getAcademicProgram())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log(this.academicProgramFormComponent.getAcademicProgram());
   }
 

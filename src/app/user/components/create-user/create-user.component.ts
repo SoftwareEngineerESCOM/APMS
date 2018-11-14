@@ -23,7 +23,11 @@ export class CreateUserComponent implements OnInit {
   }
 
   submit() {
-    this.rest.request('post', 'User', this.userFormComponent.getUser())
+    const us = this.userFormComponent.getUser() as User;
+    us.roles = [];
+    us.id = us.humanResource.id;
+    console.log('usasdfds', us);
+    this.rest.request('post', 'User', us)
       .subscribe(response => {
         console.log(response);
       });

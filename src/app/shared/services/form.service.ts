@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FormBuilder, FormControl} from '@angular/forms';
+import {FormBuilder, FormControl, Validators} from '@angular/forms';
 import {map, startWith} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -14,13 +14,13 @@ export class FormService {
   getDefaultValue(property: any): any {
     switch (typeof property) {
       case 'string':
-        return [''];
+        return ['', Validators.required];
       case 'number':
-        return [0];
+        return [0, Validators.required];
       case 'boolean':
-        return [false];
+        return [false, Validators.required];
     }
-    return [''];
+    return ['', Validators.required];
   }
 
   createFormFromObject(model: Object) {

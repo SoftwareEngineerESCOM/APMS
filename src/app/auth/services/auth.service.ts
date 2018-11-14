@@ -18,4 +18,8 @@ export class AuthService {
     return this.authenticated;
   }
 
+  logout() {
+    this.authenticated = false;
+  }
+
 }

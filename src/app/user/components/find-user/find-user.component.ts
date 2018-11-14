@@ -108,7 +108,7 @@ export class FindUserComponent implements OnInit {
   delete(id) {
     this.rest.request('delete', 'User/' + id, undefined).subscribe(response => {
       console.log(response);
-      this.getUsers();
+      this.getUsersByWorkplaceId();
     });
     console.log('delete: ' + id);
   }

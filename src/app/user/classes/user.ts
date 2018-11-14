@@ -9,13 +9,13 @@ export class User {
   humanResource: HumanResource;
   roles: Role[];
 
-  constructor(id?: number, token?: string, password?: string, isAccountActive?: boolean,
+  constructor(id?: number, token?: string, password?: string, isAccountBlocked?: boolean,
               humanResource?: HumanResource, roles?: Role[]) {
-    this.id = id;
-    this.token = token;
-    this.password = password;
-    this.isAccountBlocked = isAccountActive;
+    this.id = id ? id : 0;
+    this.token = token ? token : '';
+    this.password = password ? password : '';
+    this.isAccountBlocked = isAccountBlocked ? isAccountBlocked : false;
     this.humanResource = humanResource ? humanResource : new HumanResource();
-    this.roles = roles;
+    this.roles = roles ? roles : [];
   }
 }

@@ -23,7 +23,10 @@ export class CreateAcademicProgramComponent implements OnInit {
   }
 
   submit() {
-    this.rest.request('post', 'AcademicProgram', this.academicProgramFormComponent.getAcademicProgram());
+    this.rest.request('post', 'AcademicProgram', this.academicProgramFormComponent.getAcademicProgram())
+      .subscribe(response => {
+        console.log(response);
+      });
     console.log(this.academicProgramFormComponent.getAcademicProgram());
   }
 

@@ -4,6 +4,7 @@ import {FormGroup} from '@angular/forms';
 import {FormService} from '../../../shared/services/form.service';
 import {AcademicProgram} from '../../classes/academic-program';
 import {RestService} from '../../../shared/services/rest.service';
+import {UserService} from '../../../shared/services/user.service';
 
 @Component({
   selector: 'app-academic-program-form',
@@ -19,7 +20,7 @@ export class AcademicProgramFormComponent implements OnInit {
 
   academicProgramForm: FormGroup;
 
-  constructor(private formService: FormService) {
+  constructor(private formService: FormService, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -27,6 +28,8 @@ export class AcademicProgramFormComponent implements OnInit {
   }
 
   getAcademicProgram(): AcademicProgram {
+    const academicProgram = this.academicProgramForm.value as AcademicProgram;
+    academicProgram.workplace = this.userService.getWorkplace();
     return this.academicProgramForm.value as AcademicProgram;
   }
 

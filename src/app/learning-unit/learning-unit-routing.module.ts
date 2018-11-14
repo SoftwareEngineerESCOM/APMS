@@ -4,14 +4,16 @@ import {CreateLearningUnitComponent} from './components/create-learning-unit/cre
 import {UpdateLearningUnitComponent} from './components/update-learning-unit/update-learning-unit.component';
 import {ReadLearningUnitComponent} from './components/read-learning-unit/read-learning-unit.component';
 import {FindLearningUnitComponent} from './components/find-learning-unit/find-learning-unit.component';
+import {CreateAcademicProgramComponent} from '../academic-program/components/create-academic-program/create-academic-program.component';
+import {AuthGuardService} from '../auth/services/auth-guard.service';
 
 const base = 'ua/';
 
 export const learningUnitRoutes: Routes = [
-  {path: base + 'crear', component: CreateLearningUnitComponent},
-  {path: base + 'consultar', component: FindLearningUnitComponent},
-  {path: base + 'actualizar', component: UpdateLearningUnitComponent},
-  {path: base + 'leer', component: ReadLearningUnitComponent}
+  {path: base + 'crear', component: CreateLearningUnitComponent, canActivate: [AuthGuardService]},
+  {path: base + 'consultar', component: FindLearningUnitComponent, canActivate: [AuthGuardService]},
+  {path: base + 'actualizar', component: UpdateLearningUnitComponent, canActivate: [AuthGuardService]},
+  {path: base + 'leer', component: ReadLearningUnitComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

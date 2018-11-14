@@ -7,9 +7,9 @@ export class Workplace {
   workplaceType: WorkplaceType;
 
   constructor(id?: number, name?: string, abbreviation?: string, workPlaceType?: WorkplaceType) {
-    this.id = id;
-    this.name = name;
-    this.abbreviation = abbreviation;
+    this.id = id ? id : 0;
+    this.name = name ? name : '';
+    this.abbreviation = abbreviation ? abbreviation : '';
     this.workplaceType = workPlaceType ? workPlaceType : new WorkplaceType();
   }
 }
